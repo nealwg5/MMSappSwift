@@ -1,0 +1,27 @@
+/*
+ //
+ // CSS styling for the First Watch full article pages
+ //
+ */
+
+body {
+    
+    background: -webkit-linear-gradient(top, #d2d6c8 0%, white 200px);
+    font: 13px/1.5 Verdana, Helvetica, Arial, sans-serif;
+    
+}
+
+h1 {
+    
+    color: #566a23;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    
+}
+
+.linkHeader {
+    
+    color: #7b8562;
+    font-weight: bold;
+    
+}
