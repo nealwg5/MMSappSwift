@@ -44,14 +44,14 @@ class JournalWatchSearch {
             
             url = "https://avelqu6i45.execute-api.us-east-1.amazonaws.com/jwatch_stage/search?query=\(query)&articleClass:%22Summary%22__specialty:%22\(theCache.getCachedArticleTopicSetting().articleSpecialty)%22&endDate=\(endDate)&format=xml"
             
-            NSLog("URL TEST: \(url), specialty: \(theCache.getCachedArticleTopicSetting().articleSpecialty)")
+            //NSLog("URL TEST: \(url), specialty: \(theCache.getCachedArticleTopicSetting().articleSpecialty)")
             
         } else {        //Don't include a specific article topic in the search
             
             url = "https://avelqu6i45.execute-api.us-east-1.amazonaws.com/jwatch_stage/search?query=\(query)&articleClass:%22Summary%22&endDate=\(endDate)&format=xml"
         }
         
-        NSLog("theURL: \(url)")
+       
         
         let theURL = NSURL(string: url)
         

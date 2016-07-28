@@ -52,7 +52,6 @@ class NEJMsearch {
             
         }
         
-        NSLog("theURL: \(url)")
        
         let theURL = NSURL(string: url)
        

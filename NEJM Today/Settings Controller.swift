@@ -214,7 +214,7 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
         let theTopic = NEJMTopics[topics[row]]
         let theSpecialty = JWatchSpecialties[topics[row]]
         
-        NSLog("top: \(theTopic), spec: \(theSpecialty)")
+        //NSLog("top: \(theTopic), spec: \(theSpecialty)")
 
         theCache.cacheArticleTopicSetting(theTopic!, articleSpecialty: theSpecialty!)
     

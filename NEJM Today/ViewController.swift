@@ -482,7 +482,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //Refreshes all the articles
     func refreshAll() {
-        NSLog("refreshing all")
+        //NSLog("refreshing all")
         //Stops the pull-to-refresh controller
         self.refreshController.endRefreshing()
         
@@ -668,13 +668,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         //Default value of completion handler should be "none" (no new data)
         var theCompletionHandler = "None"
         
-        NSLog("checking...")
+        //NSLog("checking...")
         //Check each article type for new articles
         let newNEJM = checkForNewArticlesNEJM()
         let newJWatch = checkForNewArticlesJWatch()
         let newFWatch = checkForNewArticlesFWatch()
         
-        NSLog("checked")
+        //NSLog("checked")
         
         //If new articles, update theCompletionHandler and send a notification
         if ((newNEJM != false) || (newJWatch != false) || (newFWatch != false)) {
@@ -686,7 +686,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             sendNewArticlesNotification(newNEJM, newJWatch: newJWatch, newFWatch: newFWatch)
             
         }
-        NSLog("done")
+        //NSLog("done")
         return theCompletionHandler
         
     }

@@ -46,7 +46,7 @@ class NEJMArticles {
             
         }
         
-        NSLog("theURL: \(url)")
+        
         
         let theURL = NSURL(string: url)
         
