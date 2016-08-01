@@ -91,7 +91,9 @@ class NEJMsearch {
             thePubDate = getChildContent("pubdate", fullText: theXML)
             pubDates.append(thePubDate)
             
-            theConclusion = getChildContent("oa_conclusion", fullText: theXML)
+            
+            //theConclusion = getChildContent("oa_conclusion", fullText: theXML)
+            theConclusion = getConclusion("oa_conclusion", fullText: theXML)
             
             //Parses the conclusion
             //Cuts the conclusion up into arrays of words and tags
@@ -105,6 +107,7 @@ class NEJMsearch {
             
             //Counts the number of words put into the extract so far
             var numWords = 0
+            
             
             //Loops until the extract is 25 words long
             while (wordIndex < extractArray.count){
@@ -261,6 +264,25 @@ class NEJMsearch {
         return theContent
         
     }
+    
+    func getConclusion(tagName: String, fullText: String) -> String {
+        
+        //Cuts off the content before the tag
+        let indexOfStartTagStart = getSubstringIndex(fullText, theSubstring: "<\(tagName)")
+        let cutFromStartTagStart = getSubstringFromIndexSafe(fullText, theIndex: indexOfStartTagStart)
+        
+        //Cuts off the opening tag
+        let indexOfContentStart = getSubstringIndex(cutFromStartTagStart, theSubstring: ">") + 1
+        let cutFromStartTagEnd = getSubstringFromIndexSafe(cutFromStartTagStart, theIndex: indexOfContentStart)
+        
+        //Cuts off the content after the closing tag, including the closing tag itself (now you're left with just the content)
+        let indexOfEndTag = getSubstringIndex(cutFromStartTagEnd, theSubstring: "</\("result")")
+        let theContent = getSubstringToIndexSafe(cutFromStartTagEnd, theIndex: indexOfEndTag)
+        
+        return theContent
+        
+    }
+    
     
     //Returns true if new paragraph
     //Returns false otherwise

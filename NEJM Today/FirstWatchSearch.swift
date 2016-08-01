@@ -54,6 +54,11 @@ class FirstWatchSearch {
             
         }
         
+        
+   
+        
+       
+        
         //Stores the total number of articles in the giver date range
         let totalArticles = getArticleCountWithXML(theXML)
         
@@ -236,6 +241,7 @@ class FirstWatchSearch {
     //Returns an empty string if there is no instance of the specified tag in the string
     func getChildContent(tagName: String, fullText: String) -> String {
         
+        let emptyTag = getSubstringIndex(fullText, theSubstring: "<oa_conclusion/><p>")
         //Cuts off the content before the tag
         let indexOfStartTagStart = getSubstringIndex(fullText, theSubstring: "<\(tagName)")
         let cutFromStartTagStart = getSubstringFromIndexSafe(fullText, theIndex: indexOfStartTagStart)
@@ -251,6 +257,26 @@ class FirstWatchSearch {
         return theContent
         
     }
+    
+    func getConclusion(tagName: String, fullText: String) -> String {
+        
+        let indexOfStartTagStart = getSubstringIndex(fullText, theSubstring: "<\(tagName)")
+        let cutFromStartTagStart = getSubstringFromIndexSafe(fullText, theIndex: indexOfStartTagStart)
+        
+        //Cuts off the opening tag
+        let indexOfContentStart = getSubstringIndex(cutFromStartTagStart, theSubstring: ">") + 1
+        let cutFromStartTagEnd = getSubstringFromIndexSafe(cutFromStartTagStart, theIndex: indexOfContentStart)
+        
+        //Cuts off the content after the closing tag, including the closing tag itself (now you're left with just the content)
+        let indexOfEndTag = getSubstringIndex(cutFromStartTagEnd, theSubstring: "</\(tagName)")
+        let theContent = getSubstringToIndexSafe(cutFromStartTagEnd, theIndex: indexOfEndTag)
+        
+        return theContent
+        
+    }
+    
+    
+
     
     //Returns true if new paragraph
     //Returns false otherwise
