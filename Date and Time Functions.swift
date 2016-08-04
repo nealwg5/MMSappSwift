@@ -122,11 +122,13 @@ func getDateInfoYYYYMMDD(daysBeforeToday: Int) -> (day: String, month: String, y
     
     //Loops to get the specified date in yyyy-mm-dd format
     if (daysBeforeToday >= 0) {
-    
-        for (var dateIndex = 0; dateIndex < daysBeforeToday; dateIndex++) {
+        var dateIndex = 0
+        while (dateIndex < daysBeforeToday)
+        {
+        ////for (var dateIndex = 0; dateIndex < daysBeforeToday; dateIndex++) {
     
             theDate = getDayBeforeYYYYMMDD(theDate)
-        
+            dateIndex += 1
         }
         
     }

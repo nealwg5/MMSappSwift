@@ -76,8 +76,12 @@ class NEJMsearch {
         var thePubDate = ""
         var theConclusion = ""
         
+       
         //Loops through each article in the request
-        for (var articleIndex = 0; articleIndex < totalArticles; articleIndex += 1) {
+        var articleIndex = 0
+        while (articleIndex < totalArticles)
+        {
+        //////for (var articleIndex = 0; articleIndex < totalArticles; articleIndex += 1) {
             
             //Gets the title, id, pubdate, and conclusion strings of each article and appends them to their respective arrays
             theTitle = getChildContent("title", fullText: theXML)
@@ -142,27 +146,31 @@ class NEJMsearch {
                 theXML = getSubstringFromIndexSafe(theXML, theIndex: (getSubstringIndex(theXML, theSubstring: "</result>") + 9))
                 
             }
-            
+            articleIndex += 1
         }
         
         //A list of article objects
         var theArticles = [Article]()
         
+        
         //Loops though each article and adds the data
-        for (var articleIndex = 0; articleIndex < totalArticles; articleIndex += 1) {
+        var articleIndex2 = 0
+        while (articleIndex2 < totalArticles)
+        {
+        ////for (var articleIndex = 0; articleIndex < totalArticles; articleIndex += 1) {
             
             //A blank article object
             let individualArticle = Article()
             
             //Sets the values of the article object
-            individualArticle.title = titles[articleIndex]
-            individualArticle.id = ids[articleIndex]
-            individualArticle.pubDate = pubDates[articleIndex]
-            individualArticle.extract = NSAttributedString(string: extracts[articleIndex])
+            individualArticle.title = titles[articleIndex2]
+            individualArticle.id = ids[articleIndex2]
+            individualArticle.pubDate = pubDates[articleIndex2]
+            individualArticle.extract = NSAttributedString(string: extracts[articleIndex2])
             
             //Appends the article object to the article array
             theArticles.append(individualArticle)
-            
+            articleIndex2 += 1
         }
         
         //return theArticles

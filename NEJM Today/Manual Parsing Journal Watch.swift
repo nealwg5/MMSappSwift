@@ -67,7 +67,10 @@ class JournalWatchArticles {
         var thePubDate = ""
         
         //Loops through each article in the request
-        for (var articleIndex = 0; articleIndex < totalArticles; articleIndex += 1) {
+        var articleIndex = 0
+        while (articleIndex < totalArticles)
+        {
+        ////for (var articleIndex = 0; articleIndex < totalArticles; articleIndex += 1) {
             
             //Gets the information of each article and decodes any character entities, if there are any
             theTitle = getChildContent("title", fullText: theXML)
@@ -97,7 +100,10 @@ class JournalWatchArticles {
             var extractContentState = "normal"
             
             //Loop through each word or tag
-            for (var contentIndex = 0; contentIndex < extractArray.count; contentIndex += 1) {
+            var contentIndex = 0
+            while (contentIndex < extractArray.count)
+            {
+            //for (var contentIndex = 0; contentIndex < extractArray.count; contentIndex += 1) {
                 
                 //Gets the content state of the word or tag and decodes any character entities, if necessary
                 extractContentState = self.getContentState(extractContentState, theContent: extractArray[contentIndex])
@@ -113,7 +119,7 @@ class JournalWatchArticles {
                 //Set the font style of the content based on the content state and append it to the extract string
                 individualParsedContent = self.setContentStyle(extractContentState, theContent: extractArray[contentIndex])
                 parsedExtract.appendAttributedString(individualParsedContent)
-                
+                contentIndex += 1
             }
             
             //Paragraph style for the extract
@@ -133,27 +139,30 @@ class JournalWatchArticles {
                 theXML = getSubstringFromIndexSafe(theXML, theIndex: (getSubstringIndex(theXML, theSubstring: "</result>") + 9))
                 
             }
-            
+            articleIndex += 1
         }
         
         //A list of article objects
         var theArticles = [Article]()
         
         //Loops though each article and adds the data
-        for (var articleIndex = 0; articleIndex < totalArticles; articleIndex += 1) {
+        var articleIndex2 = 0
+        while (articleIndex2 < totalArticles)
+        {
+        ///for (var articleIndex = 0; articleIndex < totalArticles; articleIndex += 1) {
             
             //A blank article object
             let individualArticle = Article()
             
             //Sets the values of the article object
-            individualArticle.title = titles[articleIndex]
-            individualArticle.id = ids[articleIndex]
-            individualArticle.pubDate = pubDates[articleIndex]
-            individualArticle.extract = extracts[articleIndex]
+            individualArticle.title = titles[articleIndex2]
+            individualArticle.id = ids[articleIndex2]
+            individualArticle.pubDate = pubDates[articleIndex2]
+            individualArticle.extract = extracts[articleIndex2]
             
             //Appends the article object to the article array
             theArticles.append(individualArticle)
-            
+            articleIndex2 += 1
         }
         
         //return theArticles
